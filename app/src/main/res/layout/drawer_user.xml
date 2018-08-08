@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_drawer"
+    android:layout_width="249dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    android:paddingLeft="24dp" >
+    
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="130dp"
+       android:gravity="center">
+
+       <RelativeLayout
+           android:id="@+id/user_layout"
+           android:layout_width="94dp"
+           android:layout_height="match_parent"
+           android:gravity="center">
+       <com.makeramen.roundedimageview.RoundedImageView
+           android:id="@+id/drawer_user"
+           android:layout_width="79dp"
+           android:layout_height="79dp"
+           android:src="@drawable/example"
+           app:riv_border_color="@color/White"
+           app:riv_border_width="1px"
+           app:riv_corner_radius="166dp" />
+
+       </RelativeLayout>
+
+       <LinearLayout
+           android:padding="15dp"
+           android:layout_toRightOf="@+id/user_layout"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:gravity="center_vertical"
+           android:orientation="vertical">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="박윤성"
+               android:textColor="@color/black"
+               android:textStyle="bold"
+               android:textSize="16.5sp"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+               android:text="YOONMIHN"
+               android:textSize="13.7sp"/>
+
+
+       </LinearLayout>
+
+   </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="2.3dp"
+            android:layout_height="match_parent"
+            android:background="@color/check_blue">
+
+        </LinearLayout>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="마저찾기"
+            android:textSize="15.3sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16.3dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="2.3dp"
+            android:layout_height="match_parent"
+            android:background="@color/check_blue">
+
+        </LinearLayout>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="채팅창"
+            android:textSize="15.3sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16.3dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="2.3dp"
+            android:layout_height="match_parent"
+            android:background="@color/check_blue">
+
+        </LinearLayout>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="제품 목록 수정"
+            android:textSize="15.3sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16.3dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="2.3dp"
+            android:layout_height="match_parent"
+            android:background="@color/check_blue">
+
+        </LinearLayout>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="설정"
+            android:textSize="15.3sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16.3dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="2.3dp"
+            android:layout_height="match_parent"
+            android:background="@color/check_blue">
+
+        </LinearLayout>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="로그아웃"
+            android:textSize="15.3sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16.3dp"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

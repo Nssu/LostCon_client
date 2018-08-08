@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/invalid_name">
+
+    <FrameLayout
+        android:id="@+id/main_profile"
+        android:layout_width="match_parent"
+        android:layout_height="205.7dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/main_back1"
+                android:layout_width="match_parent"
+                android:layout_height="131.7dp"
+                android:background="@drawable/blue1">
+                
+                <ImageView
+                    android:id="@+id/menu_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/line_menu"
+                    android:layout_margin="12.3dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:background="@color/White">
+
+                <LinearLayout
+                    android:layout_marginLeft="23dp"
+                    android:layout_width="65dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="박윤성"
+                        android:textSize="14.7sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_marginTop="7dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12.2sp"
+                        android:text="YOONMIHN"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="26dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textStyle="bold"
+                        android:textSize="17.7sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12.2sp"
+                        android:text="등록된 물품 수"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/main_user"
+            android:layout_width="166.7dp"
+            android:layout_height="166.3dp"
+            android:layout_marginLeft="61.3dp"
+            android:layout_marginRight="63.3dp"
+            android:layout_gravity="center"
+            android:src="@drawable/example"
+            app:riv_border_color="@color/White"
+            app:riv_border_width="1px"
+            app:riv_corner_radius="166dp" />
+
+    </FrameLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/main_bar"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="67.3dp"
+        android:background="@color/White"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/circle_blue"
+                    android:src="@drawable/edit_white"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="목록 수정"
+                    android:textSize="10sp"
+                    android:textColor="@color/blue"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center_horizontal"/>
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="65dp"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="13dp"
+                    android:background="@drawable/circle_black"
+                    android:src="@drawable/add_white"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="추가하기"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="65dp"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/circle_blue"
+                    android:src="@drawable/search_white"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="제품 찾기"
+                    android:textSize="10sp"
+                    android:textColor="@color/blue"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+            
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/main_profile"
+        android:layout_above="@+id/main_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+</RelativeLayout>
