@@ -26,7 +26,7 @@
 
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/main_user"
+        android:id="@+id/regist_image"
         android:layout_width="154dp"
         android:layout_height="154dp"
         android:layout_gravity="center"
@@ -34,7 +34,8 @@
         app:riv_border_color="@color/gray"
         app:riv_border_width="1px"
         app:riv_corner_radius="166dp"
-        android:layout_marginTop="23.3dp"/>
+        android:layout_marginTop="23.3dp"
+        android:onClick="onclick"/>
 
         <EditText
             android:layout_width="294.3dp"
@@ -169,11 +170,13 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/cancel_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:padding="10dp"
                 android:background="@drawable/circle_blue"
-                android:src="@drawable/cancel_white"/>
+                android:src="@drawable/cancel_white"
+                android:onClick="onclick"/>
 
             <TextView
                 android:layout_width="match_parent"
