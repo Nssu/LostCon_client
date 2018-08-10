@@ -60,14 +60,46 @@
    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/menu_home"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/blue_trans">
+
+        <LinearLayout
+            android:id="@+id/menu_home_check"
+            android:layout_width="2.3dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/check_blue">
+
+        </LinearLayout>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="홈"
+            android:textSize="15.3sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16.3dp"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/menu_search"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/menu_search_check"
             android:layout_width="2.3dp"
             android:layout_height="match_parent"
-            android:background="@color/check_blue">
+            android:orientation="vertical"
+            android:background="@color/White">
 
         </LinearLayout>
 
@@ -84,18 +116,22 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/menu_chat"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/menu_chat_check"
             android:layout_width="2.3dp"
             android:layout_height="match_parent"
-            android:background="@color/check_blue">
+            android:background="@color/White"
+            android:orientation="vertical">
 
         </LinearLayout>
 
         <TextView
+
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -115,7 +151,7 @@
         <LinearLayout
             android:layout_width="2.3dp"
             android:layout_height="match_parent"
-            android:background="@color/check_blue">
+            android:background="@color/White">
 
         </LinearLayout>
 
@@ -139,7 +175,7 @@
         <LinearLayout
             android:layout_width="2.3dp"
             android:layout_height="match_parent"
-            android:background="@color/check_blue">
+            android:background="@color/White">
 
         </LinearLayout>
 
@@ -163,7 +199,7 @@
         <LinearLayout
             android:layout_width="2.3dp"
             android:layout_height="match_parent"
-            android:background="@color/check_blue">
+            android:background="@color/White">
 
         </LinearLayout>
 

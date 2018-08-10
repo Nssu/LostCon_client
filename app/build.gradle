@@ -41,5 +41,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     implementation 'jp.wasabeef:glide-transformations:3.0.1'
 
+    //sliding panel
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
+
+    //naver map
+    compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
+
+
 
 }

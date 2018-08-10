@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        sothree:umanoDragView="@+id/dragView"
+        sothree:umanoOverlay="false"
+        sothree:umanoPanelHeight="32dp"
+        sothree:umanoShadowHeight="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:gravity="center_horizontal"
+            >
+            
+            <com.nhn.android.maps.NMapView
+                android:id="@+id/mapLayout"
+                android:layout_marginTop="48.7dp"
+                android:layout_width="326dp"
+                android:layout_height="500dp">
+
+            </com.nhn.android.maps.NMapView>
+
+
+        </RelativeLayout>
+        
+        <!-- 아래 내려올 슬라이딩 바 -->
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="365dp"
+            android:orientation="vertical"
+            android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="11.3dp"
+            android:layout_marginLeft="11.3dp"
+            android:background="@drawable/chat_background">
+
+            <ImageView
+                android:layout_marginTop="12dp"
+                android:layout_width="88.3dp"
+                android:layout_height="6dp"
+                android:src="@drawable/chat_start"/>
+
+            <!-- 채팅내용 출력창 -->
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:orientation="vertical">
+
+
+            </android.support.v7.widget.RecyclerView>
+
+            <!-- 채팅 입력창 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+                
+                <ImageView
+                    android:layout_width="305dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/chat_final"/>
+                
+                
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</RelativeLayout>

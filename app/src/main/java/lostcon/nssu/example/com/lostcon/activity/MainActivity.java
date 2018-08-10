@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recycler_item;
     ArrayList<Item> item_list;
     ImageView add_item;
+    private int menu_select = 0;
+    LinearLayout[] menu;
+    LinearLayout[] menu_check ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
         recycler_item = (RecyclerView)findViewById(R.id.recycler_item) ;
         menu_button = (ImageView)findViewById(R.id.menu_button);
         add_item = (ImageView)findViewById(R.id.add_item);
+        menu = new LinearLayout[]{
+                (LinearLayout)findViewById(R.id.menu_home),
+                (LinearLayout)findViewById(R.id.menu_search),
+                (LinearLayout)findViewById(R.id.menu_chat)
+        };
+        menu_check = new LinearLayout[]{
+                (LinearLayout)findViewById(R.id.menu_home_check),
+                (LinearLayout)findViewById(R.id.menu_search_check),
+                (LinearLayout)findViewById(R.id.menu_chat_check)
+        };
 
     }
     public void setClickListener(){
@@ -53,6 +67,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),RegistActivity.class);
+                startActivity(intent);
+            }
+        });
+        menu[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(menu_select != 1) {
+                    menu[1].setBackgroundColor(getResources().getColor(R.color.blue_trans));
+                    menu[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
+                    menu_check[1].setBackgroundColor(getResources().getColor(R.color.check_blue));
+                    menu_check[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
+                    menu_select = 1;
+                }
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+        menu[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(menu_select != 2) {
+                    menu[2].setBackgroundColor(getResources().getColor(R.color.blue_trans));
+                    menu[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
+                    menu_check[2].setBackgroundColor(getResources().getColor(R.color.check_blue));
+                    menu_check[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
+                    menu_select = 2;
+                }
+                Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
                 startActivity(intent);
             }
         });

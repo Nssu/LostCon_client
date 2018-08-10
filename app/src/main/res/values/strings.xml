@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LostCon</string>
+    <string name="NAVER_API_KEY">zzfyYxDTYaPJQeDGDw8F</string>
+    <string name="NAVER_API_PW">qYposFj5OR</string>
 </resources>
