@@ -78,32 +78,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),RegistActivity.class);
+                intent.putExtra("type","add");
                 startActivity(intent);
+                finish();
             }
         });
         menu[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(menu_select != 1) {
-                    menu[1].setBackgroundColor(getResources().getColor(R.color.blue_trans));
-                    menu[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
-                    menu_check[1].setBackgroundColor(getResources().getColor(R.color.check_blue));
-                    menu_check[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
-                    menu_select = 1;
+                    layoutMain.closeDrawer(Gravity.LEFT);
                 }
                 Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+
                 startActivity(intent);
+
             }
         });
         menu[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(menu_select != 2) {
-                    menu[2].setBackgroundColor(getResources().getColor(R.color.blue_trans));
-                    menu[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
-                    menu_check[2].setBackgroundColor(getResources().getColor(R.color.check_blue));
-                    menu_check[menu_select].setBackgroundColor(getResources().getColor(R.color.White));
-                    menu_select = 2;
+                    layoutMain.closeDrawer(Gravity.LEFT);
                 }
                 Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
                 startActivity(intent);
@@ -146,17 +142,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void setDummy(){
         item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
-                "지갑", "500M이내"));
-        item_list.add(new Item("http://post.phinf.naver.net/MjAxNzA3MDJfMjA0/MDAxNDk4OTkxMDIzMjgw.KTPwdiVyAK7VDbgwjdu6TMe4JVhof5tSrawNDzPeUlog.ov-nN0ZYty7CR1gpHyFfNXCWH-l69wxbA1-tYkgOn5cg.JPEG/IWBKiEAFMyMxG_9BKjaOc3XcPvMg.jpg",
-                "지갑", "500M이내"));
-        item_list.add(new Item("http://post.phinf.naver.net/MjAxNzA3MDJfMjA0/MDAxNDk4OTkxMDIzMjgw.KTPwdiVyAK7VDbgwjdu6TMe4JVhof5tSrawNDzPeUlog.ov-nN0ZYty7CR1gpHyFfNXCWH-l69wxbA1-tYkgOn5cg.JPEG/IWBKiEAFMyMxG_9BKjaOc3XcPvMg.jpg",
-                "지갑", "500M이내"));
-        item_list.add(new Item("http://post.phinf.naver.net/MjAxNzA3MDJfMjA0/MDAxNDk4OTkxMDIzMjgw.KTPwdiVyAK7VDbgwjdu6TMe4JVhof5tSrawNDzPeUlog.ov-nN0ZYty7CR1gpHyFfNXCWH-l69wxbA1-tYkgOn5cg.JPEG/IWBKiEAFMyMxG_9BKjaOc3XcPvMg.jpg",
-                "지갑", "500M이내"));
-        item_list.add(new Item("http://post.phinf.naver.net/MjAxNzA3MDJfMjA0/MDAxNDk4OTkxMDIzMjgw.KTPwdiVyAK7VDbgwjdu6TMe4JVhof5tSrawNDzPeUlog.ov-nN0ZYty7CR1gpHyFfNXCWH-l69wxbA1-tYkgOn5cg.JPEG/IWBKiEAFMyMxG_9BKjaOc3XcPvMg.jpg",
-                "지갑", "500M이내"));
-        item_list.add(new Item("http://post.phinf.naver.net/MjAxNzA3MDJfMjA0/MDAxNDk4OTkxMDIzMjgw.KTPwdiVyAK7VDbgwjdu6TMe4JVhof5tSrawNDzPeUlog.ov-nN0ZYty7CR1gpHyFfNXCWH-l69wxbA1-tYkgOn5cg.JPEG/IWBKiEAFMyMxG_9BKjaOc3XcPvMg.jpg",
-                "지갑", "500M이내"));
+                "지갑", "23108817","50M이내","1"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","5M이내","0"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","5M이내","1"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","범위를 벗어났습니다","0"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","50M이내","1"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","70m이내","0"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","벗어났습니다","1"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","50M이내","1"));
+        item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
+                "지갑", "23108817","50M이내","1"));
+
         mAdapter.notifyDataSetChanged();
 
     }
@@ -167,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
         if(popupWindow_search.isShowing()){
             popupWindow_search.dismiss();
         }
-        finish();
     }
 
 }

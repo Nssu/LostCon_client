@@ -68,6 +68,7 @@
         </LinearLayout>
         
         <Button
+            android:id="@+id/edit_button"
             android:layout_width="10dp"
             android:layout_height="17dp"
             android:layout_marginLeft="32.3dp"

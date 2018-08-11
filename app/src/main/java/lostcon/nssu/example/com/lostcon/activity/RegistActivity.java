@@ -49,6 +49,17 @@ public class RegistActivity extends AppCompatActivity {
 
         setting();
 
+        Intent intent = getIntent();
+        String type = intent.getExtras().getString("type");
+        if(type.equals("add")){
+            //삭제 버튼 안보이게 하기
+        }else if(type.equals("edit")){
+            //삭제버튼 보이고, 내용도 받아오기
+
+        }
+
+
+
     }
 
     public void setting(){

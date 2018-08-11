@@ -54,7 +54,7 @@
                 android:layout_width="256dp"
                 android:layout_height="36dp"
                 android:background="@drawable/long_box"
-                android:text="1:1대화 요청"
+                android:text="취소"
                 android:textColor="@color/White"/>
 
         </LinearLayout>
