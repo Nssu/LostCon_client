@@ -9,9 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private int menu_select = 0;
     LinearLayout[] menu;
     LinearLayout[] menu_check ;
+    ImageView search_button;
+    public PopupWindow popupWindow_search;
+    public View popupView_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setting(){
+
+        popupView_search = getLayoutInflater().inflate(R.layout.popup_search, null);
+        popupWindow_search = new PopupWindow(popupView_search, RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT,true);
+
+        search_button = (ImageView)findViewById(R.id.search_button);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         layoutMain = (DrawerLayout)findViewById(R.id.layout_main);
         recycler_item = (RecyclerView)findViewById(R.id.recycler_item) ;
@@ -98,6 +109,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!popupWindow_search.isShowing()){
+                    popupWindow_search.showAtLocation(popupView_search, Gravity.CENTER, 0, 0);
+                }
+            }
+        });
 
     }
     public void setToolbar(){
@@ -142,5 +161,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(popupWindow_search.isShowing()){
+            popupWindow_search.dismiss();
+        }
+        finish();
+    }
 
 }

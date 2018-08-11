@@ -55,6 +55,9 @@
                 android:layout_height="6dp"
                 android:src="@drawable/chat_start"/>
 
+
+
+
             <!-- 채팅내용 출력창 -->
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -63,6 +66,8 @@
 
 
             </android.support.v7.widget.RecyclerView>
+
+
 
             <!-- 채팅 입력창 -->
             <LinearLayout
