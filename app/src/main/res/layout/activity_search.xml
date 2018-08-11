@@ -21,13 +21,14 @@
             android:gravity="center_horizontal"
             >
             
-            <com.nhn.android.maps.NMapView
+            <LinearLayout
                 android:id="@+id/mapLayout"
                 android:layout_marginTop="48.7dp"
                 android:layout_width="326dp"
-                android:layout_height="500dp">
+                android:layout_height="500dp"
+                android:orientation="horizontal">
 
-            </com.nhn.android.maps.NMapView>
+            </LinearLayout>
 
 
         </RelativeLayout>
