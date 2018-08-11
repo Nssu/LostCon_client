@@ -8,7 +8,7 @@ public class Chat {
     private String lat;
     private String lng;
 
-    public Chat(String name, String msg, String lat,String lng,String flag) {
+    public Chat(String name, String msg, String lat,String lng) {
         //this.img = img;
         this.name = name;
         this.msg = msg;

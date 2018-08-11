@@ -1,13 +1,22 @@
 package lostcon.nssu.example.com.lostcon.activity;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
 import com.nhn.android.maps.NMapController;
@@ -19,9 +28,14 @@ import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
 
+import java.util.ArrayList;
+
 import lostcon.nssu.example.com.lostcon.R;
+import lostcon.nssu.example.com.lostcon.adapter.ChatAdapter;
 import lostcon.nssu.example.com.lostcon.map.NMapPOIflagType;
 import lostcon.nssu.example.com.lostcon.map.NMapViewerResourceProvider;
+import lostcon.nssu.example.com.lostcon.model.Chat;
+import lostcon.nssu.example.com.lostcon.util.SoftKeyboard;
 
 public class SearchActivity extends NMapActivity {
 
@@ -35,6 +49,14 @@ public class SearchActivity extends NMapActivity {
 
     private DrawerLayout layout_drawer;
     private ImageView menu_button;
+    private Button chat_submit;
+    private EditText chat_edit;
+    private LinearLayout chat_sliding;
+
+    //recycler
+    RecyclerView recycler_chat;
+    RecyclerView.Adapter mAdapter;
+    ArrayList<Chat> chat_list;
 
     private int menu_select = 1;
     LinearLayout[] menu;
@@ -47,11 +69,19 @@ public class SearchActivity extends NMapActivity {
         init();
         initMap();
         setClickListener();
+        initRecyclerVIew();
+        setKeyboard();
 
 
     }
     public void init(){
+
+        recycler_chat = (RecyclerView)findViewById(R.id.recycler_chat);
+        chat_sliding = (LinearLayout)findViewById(R.id.chat_sliding);
+        chat_edit = (EditText)findViewById(R.id.chat_edit);
+        chat_submit = (Button)findViewById(R.id.chat_submit);
         layout_drawer = (DrawerLayout)findViewById(R.id.layout_drawer);
+
         menu = new LinearLayout[]{
                 (LinearLayout)findViewById(R.id.menu_home),
                 (LinearLayout)findViewById(R.id.menu_search),
@@ -72,6 +102,19 @@ public class SearchActivity extends NMapActivity {
 
 
     public void setClickListener(){
+        chat_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Chat temp = new Chat("진수",chat_edit.getText().toString(),"127.0630488","37.5092300");
+                chat_edit.setText("");
+                chat_list.add(temp);
+     //           recycler_chat.scrollToPosition(recycler_chat.getAdapter().getItemCount() - 1);
+                //통신 들어가야 함.
+
+                mAdapter.notifyDataSetChanged();
+            }
+        });
         menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +144,59 @@ public class SearchActivity extends NMapActivity {
         });
     }
 
+    private void initRecyclerVIew() {
+        chat_list = new ArrayList<>();
+        mAdapter = new ChatAdapter(this, chat_list);
+        recycler_chat.setHasFixedSize(true);
+        recycler_chat.setLayoutManager(new LinearLayoutManager(this));
+        recycler_chat.setAdapter(mAdapter);
 
+        //더미데이터 넣기
+        setDummy();
+
+    }
+
+    private void setDummy(){
+        chat_list.add(new Chat("윤성","안녕하세욤!","127.0630205","37.5091300"));
+        chat_list.add(new Chat("윤성","ㅎㅇㅎㅇㅎㅇㅎㅇ!","127.0630205","37.5091300"));
+
+        mAdapter.notifyDataSetChanged();
+    }
+
+
+    public void setKeyboard(){
+        InputMethodManager controlManager = (InputMethodManager) getSystemService(Service.INPUT_METHOD_SERVICE);
+
+        SoftKeyboard mSoftKeyboard = new SoftKeyboard(chat_sliding, controlManager);
+        mSoftKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
+            @Override
+            public void onSoftKeyboardHide() {
+                new Handler(Looper.getMainLooper())
+                        .post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(),"내려옴",Toast.LENGTH_LONG).show();
+                                // 키보드 내려왔을때
+
+                            }
+                        });
+            }
+
+
+
+            @Override
+            public void onSoftKeyboardShow() {
+                new Handler(Looper.getMainLooper())
+                        .post(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 키보드 올라왔을때
+
+                            }
+                        });
+            }
+        });
+    }
 
     public void initMap(){
         //네이버 지도를 넣기 위한 LinearLayout 컴포넌트
@@ -168,6 +263,8 @@ public class SearchActivity extends NMapActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+
+            finish();
+
     }
 }
