@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "515662742301",
+    "firebase_url": "https://lostcon-dbe22.firebaseio.com",
+    "project_id": "lostcon-dbe22",
+    "storage_bucket": "lostcon-dbe22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515662742301:android:998f72fe5e7a5088",
+        "android_client_info": {
+          "package_name": "com.example.yoonsung.filrebaseapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515662742301-1sarpv4sbk4a1j4ghhdmvjiplbe4o2mj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yoonsung.filrebaseapplication",
+            "certificate_hash": "1bd265c5c91875fa6f9388846facf39199362d82"
+          }
+        },
+        {
+          "client_id": "515662742301-pe12gi5f1r6si80kjte7seiph5kkeohg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIC6Wot0PpAMZEuuVV5SO2qy56jJq-x44"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515662742301-pe12gi5f1r6si80kjte7seiph5kkeohg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515662742301:android:8edd61db1665026b",
+        "android_client_info": {
+          "package_name": "com.example.yoonsung.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515662742301-8dv2db9dcpqh4q3sdethqh4m9euabuvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yoonsung.myapplication",
+            "certificate_hash": "1bd265c5c91875fa6f9388846facf39199362d82"
+          }
+        },
+        {
+          "client_id": "515662742301-pe12gi5f1r6si80kjte7seiph5kkeohg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIC6Wot0PpAMZEuuVV5SO2qy56jJq-x44"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515662742301-pe12gi5f1r6si80kjte7seiph5kkeohg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515662742301:android:46350abcfb754a85",
+        "android_client_info": {
+          "package_name": "lostcon.nssu.example.com.lostcon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515662742301-pe12gi5f1r6si80kjte7seiph5kkeohg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIC6Wot0PpAMZEuuVV5SO2qy56jJq-x44"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
