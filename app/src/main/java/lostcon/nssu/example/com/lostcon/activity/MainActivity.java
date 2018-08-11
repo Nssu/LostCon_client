@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -29,17 +30,27 @@ public class MainActivity extends AppCompatActivity {
     TextView user_name;
     DrawerLayout layoutMain;
     ImageView menu_button;
+    ImageView search_button;
+    ImageView add_item;
+
     RecyclerView.Adapter mAdapter;
     RecyclerView recycler_item;
     ArrayList<Item> item_list;
-    ImageView add_item;
+
     private int menu_select = 0;
     LinearLayout[] menu;
     LinearLayout[] menu_check ;
-    ImageView search_button;
+
+    //찾기 요청 첫번째팝업
     public PopupWindow popupWindow_search;
     public View popupView_search;
+    Button request_loc;
+    Button request_chat;
+    Button cancel_button;
 
+    //1:1찾기 팝업(사례금)
+    public PopupWindow popupWindow_chat;
+    public View popupView_chat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setting(){
+        popupView_chat = getLayoutInflater().inflate(R.layout.popup_request_chat, null);
+        popupWindow_chat = new PopupWindow(popupView_chat, RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT,true);
+
+        request_loc = (Button)(popupView_chat.findViewById(R.id.request_loc));
+        request_chat = (Button)(popupView_chat.findViewById(R.id.request_chat));
+        cancel_button = (Button)(popupView_chat.findViewById(R.id.cancel_button));
+
         user_name = (TextView)findViewById(R.id.user_name);
         popupView_search = getLayoutInflater().inflate(R.layout.popup_search, null);
         popupWindow_search = new PopupWindow(popupView_search, RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT,true);
@@ -76,6 +94,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setClickListener(){
+        /*
+        request_loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //위치정보만 요청 통신
+                popupWindow_search.dismiss();
+            }
+        });
+        request_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow_search.dismiss();
+                if(!popupWindow_search.isShowing())
+                    popupWindow_search.showAtLocation(popupView_search, Gravity.CENTER, 0, 0);
+            }
+        });
+        cancel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow_search.dismiss();
+            }
+        });
+
+        request_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow_search.dismiss();
+            }
+        });
+        */
         add_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,15 +154,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        /*search_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!popupWindow_search.isShowing()){
-                    popupWindow_search.showAtLocation(popupView_search, Gravity.CENTER, 0, 0);
-                }
-            }
-        });*/
 
     }
     public void setToolbar(){
@@ -154,7 +193,8 @@ public class MainActivity extends AppCompatActivity {
         item_list.add(new Item("https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAxODAyMjBfMTAw%2FMDAxNTE5MTM0Njg2NDg5.MAIaGW5f-ZBDvGeSZzm-ARjsJtn587p8a9szvSKzZ-Mg.qZV5Yw_bfQR8zOOcEGA0F_rPvMruZUkOjP2l0PXUx7Yg.JPEG%2FIfj2hg99lZbtozod83RpLJh7oN7I.jpg&type=b400",
                 "책", "23108822","70m이내","0","70"));
         item_list.add(new Item("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles1.naver.net%2F20120811_136%2Fyumizz_1344628522452uChbQ_JPEG%2F%25C1%25DF%25B0%25ED%25BD%25BA%25B8%25B6%25C6%25AE%25C6%25F9%25B8%25C5%25C0%25D4.jpg&type=b400",
-                "스마트폰", "23108821","20M이내","1","30"));
+                "스마트폰", "23108821",
+                "20M이내","1","30"));
         item_list.add(new Item("https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20170923_136%2Fnewton2000_1506166439240UgbFm_JPEG%2F37876719312849136_321216785.jpg&type=b400",
                 "우산", "23108823","범위를 벗어났습니다","1","50"));
         item_list.add(new Item("https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAxNzA0MDNfMTcz%2FMDAxNDkxMjAxMDc5MTQ5.ypZYixi1XiPfGpmfsGyr0tJb1FN20zw8AT2yS7PJ2o0g.agWEF4hYKA7oHM-pdQog5wdydjGCkMmWqh3HoLhwj7kg.JPEG%2FI9kL65pt6q7HBrQsrHDld3m6soQw.jpg&type=b400",
