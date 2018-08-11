@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setDummy(){
         item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
-                "지갑", "23108817","50M이내","1"));
+                "지갑", "23108817","범위를 벗어났습니다","1"));
         item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",
                 "지갑", "23108817","5M이내","0"));
         item_list.add(new Item("http://post.phinf.naver.net/20150430_258/seul_9_1430363945075fV5VL_JPEG/mug_obj_201504301219056204.jpg",

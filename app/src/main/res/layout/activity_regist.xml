@@ -75,15 +75,49 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="거리설정"
-                android:layout_marginLeft="20.3dp"
                 android:textColor="@color/black"
                 android:textSize="16.2sp"/>
 
            <SeekBar
+               android:id="@+id/seekbar"
                android:layout_below="@+id/text_distance"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="10dp" />
+            
+            <LinearLayout
+                android:layout_below="@id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0m"
+                    android:layout_marginLeft="9dp"
+                    android:textSize="13.8sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50m"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                android:textSize="13.8sp"
+                android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:text="70m"
+                    android:layout_marginRight="9dp"
+                    android:textSize="13.8sp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
         </RelativeLayout>
 
 
@@ -96,7 +130,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="알림설정"
-                android:layout_marginLeft="20.3dp"
                 android:textColor="@color/black"
                 android:textSize="16.2sp"/>
             
@@ -122,12 +155,12 @@
                 android:layout_height="40dp"
                 android:padding="13dp"
                 android:background="@drawable/circle_blue"
-                android:src="@drawable/add_white"/>
+                android:src="@drawable/delete_white"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="추가하기"
+                android:text="삭제하기"
                 android:textSize="10sp"
                 android:textColor="@color/blue"
                 android:layout_marginTop="4dp"
@@ -146,12 +179,12 @@
                 android:layout_height="40dp"
                 android:padding="10dp"
                 android:background="@drawable/circle_blue"
-                android:src="@drawable/edit_white"/>
+                android:src="@drawable/submit_white"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="목록 수정"
+                android:text="확인하기"
                 android:textSize="10sp"
                 android:textColor="@color/blue"
                 android:layout_marginTop="4dp"
@@ -169,7 +202,7 @@
                 android:id="@+id/cancel_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:background="@drawable/circle_blue"
                 android:src="@drawable/cancel_white"
                 android:onClick="onclick"/>

@@ -45,10 +45,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         holder.item_name.setText(list.get(position).getName());
         holder.item_distance.setText(list.get(position).getDistance());
         Glide.with(context).load(list.get(position).getIm_url()).into(holder.item_image);
-        if(list.get(position).getAlarm().equals("1")){
-
+        //범위벗어남(찾고잇음파랑/그외회색)
+        if(list.get(position).getDistance().equals("범위를 벗어났습니다")){
+            holder.speaker.setBackgroundResource(R.drawable.search_blue);
+        }else if(list.get(position).getAlarm().equals("1")) {
+            holder.speaker.setBackgroundResource(R.drawable.speaker_gray);
+            list.get(position).setAlarm("0");
         }
-
+        else {
+            holder.speaker.setBackgroundResource(R.drawable.speaker_blue);
+            list.get(position).setAlarm("1");
+        }
         holder.edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,15 +70,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 //범위벗어남(찾고잇음파랑/그외회색)
-                if(list.get(position).getAlarm().equals("1")) {
-                    v.setBackgroundResource(R.drawable.circle_gray);
+                if(list.get(position).getDistance().equals("범위를 벗어났습니다")){
+                    v.setBackgroundResource(R.drawable.search_blue);
+
+                }else if(list.get(position).getAlarm().equals("1")) {
+                    v.setBackgroundResource(R.drawable.speaker_gray);
                     list.get(position).setAlarm("0");
                 }
                 else {
-                    v.setBackgroundResource(R.drawable.circle_blue);
+                    v.setBackgroundResource(R.drawable.speaker_blue);
                     list.get(position).setAlarm("1");
                 }
-            }
+
+
+           }
         });
     }
 
