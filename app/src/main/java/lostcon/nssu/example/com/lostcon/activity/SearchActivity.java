@@ -106,7 +106,7 @@ public class SearchActivity extends NMapActivity {
             @Override
             public void onClick(View v) {
 
-                Chat temp = new Chat("진수",chat_edit.getText().toString(),"127.0630488","37.5092300");
+                Chat temp = new Chat("윤성",chat_edit.getText().toString(),"127.0630488","37.5092300");
                 chat_edit.setText("");
                 chat_list.add(temp);
      //           recycler_chat.scrollToPosition(recycler_chat.getAdapter().getItemCount() - 1);
@@ -157,8 +157,8 @@ public class SearchActivity extends NMapActivity {
     }
 
     private void setDummy(){
-        chat_list.add(new Chat("윤성","안녕하세욤!","127.0630205","37.5091300"));
-        chat_list.add(new Chat("윤성","ㅎㅇㅎㅇㅎㅇㅎㅇ!","127.0630205","37.5091300"));
+        chat_list.add(new Chat("진수","안녕하세욤!","127.0630205","37.5091300"));
+        chat_list.add(new Chat("진수","ㅎㅇㅎㅇㅎㅇㅎㅇ!","127.0630205","37.5091300"));
 
         mAdapter.notifyDataSetChanged();
     }

@@ -41,7 +41,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         holder.chat_content.setText(list.get(position).getMsg());
       //  Glide.with(context).load(list.get(position).get()).into(holder.user_image);
         //보낸이가 내이름일 경우 보여주는 뷰를 다르게 한다!
-        if(list.get(position).getName().equals("진수")){
+        if(list.get(position).getName().equals("윤성")){
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
             params.gravity = Gravity.RIGHT;
             holder.chat_content.setLayoutParams(params);

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ import lostcon.nssu.example.com.lostcon.model.Item;
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    TextView user_name;
     DrawerLayout layoutMain;
     ImageView menu_button;
     RecyclerView.Adapter mAdapter;
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setting(){
-
+        user_name = (TextView)findViewById(R.id.user_name);
         popupView_search = getLayoutInflater().inflate(R.layout.popup_search, null);
         popupWindow_search = new PopupWindow(popupView_search, RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT,true);
 
