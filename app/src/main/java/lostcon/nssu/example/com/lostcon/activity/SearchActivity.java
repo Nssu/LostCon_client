@@ -40,6 +40,7 @@ import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.socket.client.Socket;
 import lostcon.nssu.example.com.lostcon.R;
 import lostcon.nssu.example.com.lostcon.adapter.ChatAdapter;
 import lostcon.nssu.example.com.lostcon.common.Constants;
@@ -77,6 +78,7 @@ public class SearchActivity extends NMapActivity {
     private String lng;
     private String lat;
     private BroadcastReceiver receiver;
+    private Socket socket;
 
     private int menu_select = 1;
     LinearLayout[] menu;
