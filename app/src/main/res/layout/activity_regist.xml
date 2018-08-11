@@ -31,13 +31,15 @@
         app:riv_border_width="1px"
         app:riv_corner_radius="166dp"
         android:layout_marginTop="23.3dp"
-        android:onClick="onclick"/>
+        android:onClick="onclick"
+        android:scaleType="centerCrop"/>
 
         <EditText
             android:layout_width="294.3dp"
             android:layout_height="37dp"
             android:background="@drawable/edit_box_long"
-            android:hint="      이름"
+            android:hint="이름"
+            android:paddingLeft="20dp"
             android:layout_marginTop="20dp"/>
         
         <RelativeLayout
@@ -94,7 +96,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0m"
+                    android:text="30m"
                     android:layout_marginLeft="9dp"
                     android:textSize="13.8sp"
                     android:layout_weight="1"/>

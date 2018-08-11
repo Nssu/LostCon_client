@@ -41,7 +41,9 @@
                     android:orientation="horizontal">
 
                 </LinearLayout>
+
                 <LinearLayout
+                    android:visibility="invisible"
                     android:id="@+id/chat_sliding"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"

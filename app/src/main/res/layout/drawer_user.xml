@@ -25,6 +25,7 @@
            android:layout_width="79dp"
            android:layout_height="79dp"
            android:src="@drawable/example"
+           android:scaleType="centerCrop"
            app:riv_border_color="@color/White"
            app:riv_border_width="1px"
            app:riv_corner_radius="166dp" />

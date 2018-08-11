@@ -16,6 +16,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -28,6 +29,7 @@ import lostcon.nssu.example.com.lostcon.R;
 public class RegistActivity extends AppCompatActivity {
 
     ImageView regist_image;
+    SeekBar seekbar;
 
     // 권한 체크 관련
     static final int PERMISSIONS_REQUEST_CODE = 1000;
@@ -64,6 +66,7 @@ public class RegistActivity extends AppCompatActivity {
 
     public void setting(){
         regist_image = (ImageView)findViewById(R.id.regist_image);
+        seekbar = (SeekBar)findViewById(R.id.seekbar);
     }
 
 

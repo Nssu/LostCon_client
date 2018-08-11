@@ -21,13 +21,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="131.7dp"
                 android:background="@drawable/blue1">
-                
-          <ImageView
+
+                <ImageView
                     android:id="@+id/menu_button"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/line_menu"
-                    android:layout_margin="12.3dp"/>
+                    android:layout_margin="12.3dp"
+                    android:src="@drawable/line_menu" />
 
             </RelativeLayout>
 
@@ -37,54 +37,54 @@
                 android:background="@color/White">
 
                 <LinearLayout
-                    android:layout_marginLeft="23dp"
                     android:layout_width="65dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_gravity="center_vertical"
-                    android:gravity="center">
+                    android:layout_marginLeft="23dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="박윤성"
+                        android:textColor="@color/black"
                         android:textSize="14.7sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:layout_marginTop="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12.2sp"
-                        android:text="YOONMIHN"/>
+                        android:layout_marginTop="7dp"
+                        android:text="YOONMIHN"
+                        android:textSize="12.2sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginLeft="20dp"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_alignParentRight="true"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginRight="26dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
-                        android:textStyle="bold"
+                        android:textColor="@color/black"
                         android:textSize="17.7sp"
-                        android:textColor="@color/black"/>
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12.2sp"
-                        android:text="등록된 물품 수"/>
+                        android:layout_marginTop="2dp"
+                        android:text="등록된 물품 수"
+                        android:textSize="12.2sp" />
 
                 </LinearLayout>
 
@@ -102,7 +102,8 @@
             android:src="@drawable/example"
             app:riv_border_color="@color/White"
             app:riv_border_width="1px"
-            app:riv_corner_radius="166dp" />
+            app:riv_corner_radius="166dp"
+            android:scaleType="centerCrop"/>
 
     </FrameLayout>
 
