@@ -10,7 +10,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -35,20 +34,14 @@ public class FcmMessagingService extends FirebaseMessagingService {
             Map<String, String> pushData = remoteMessage.getData();
             JSONObject json = new JSONObject(pushData);
 
-            Log.d("fcm", json.toString());
-            try {
-                Log.d("fcm", json.getString("portNum"));
-                Log.d("fcm", json.getInt("portNum") + "!!!");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
             /*Observable.just(Constants.flag)
                     .subscribe(value -> sendNotification(remoteMessage.getNotification().getBody()) );*/
             try {
-                sendNotification(remoteMessage.getNotification().getBody(), json.getInt("portNum"));
+                sendNotification(remoteMessage.getNotification().getBody(), json);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
         }
 
 
@@ -60,38 +53,45 @@ public class FcmMessagingService extends FirebaseMessagingService {
 
     }
 
-    private void sendNotification(String body, int port)
-    {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra(Constants.DATA_PORT, port);
+    private void sendNotification(String body, JSONObject json) throws JSONException {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(Constants.DATA_PORT, json.getString("portNum"));
+        if(!json.isNull("money"))
+        {
+            intent.putExtra(Constants.DATA_MONEY, json.getString("money"));
+        }
+        if(!json.isNull("item_uuid"))
+        {
+            intent.putExtra(Constants.DATA_UUID, json.getString("item_uuid"));
+        }
 
-            PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent
-                    ,PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent
+                ,PendingIntent.FLAG_ONE_SHOT);
 
-            String channelId = getString(R.string.default_channel_id);
-            Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        String channelId = getString(R.string.default_channel_id);
+        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-            NotificationCompat.Builder builder =
-                    new NotificationCompat.Builder(this, channelId)
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle("요기요")
-                            .setContentText(body)
-                            .setAutoCancel(true)
-                            .setSound(uri)
-                            .setVibrate(new long[]{1000,1000})
-                            .setLights(Color.WHITE,1500,1500)
-                            .setContentIntent(pendingIntent);
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, channelId)
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentTitle("요기요")
+                        .setContentText(body)
+                        .setAutoCancel(true)
+                        .setSound(uri)
+                        .setVibrate(new long[]{1000,1000})
+                        .setLights(Color.WHITE,1500,1500)
+                        .setContentIntent(pendingIntent);
 
-            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            {
-                String channelName = getString(R.string.default_channel_name);
-                NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH); //알림의 중요도
-                manager.createNotificationChannel(channel);
-            }
-            manager.notify(0,builder.build());
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            String channelName = getString(R.string.default_channel_name);
+            NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH); //알림의 중요도
+            manager.createNotificationChannel(channel);
+        }
+        manager.notify(0,builder.build());
 
 
 

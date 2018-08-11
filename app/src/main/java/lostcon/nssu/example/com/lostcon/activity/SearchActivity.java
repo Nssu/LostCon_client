@@ -2,8 +2,10 @@ package lostcon.nssu.example.com.lostcon.activity;
 
 import android.Manifest;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -40,6 +42,7 @@ import java.util.List;
 
 import lostcon.nssu.example.com.lostcon.R;
 import lostcon.nssu.example.com.lostcon.adapter.ChatAdapter;
+import lostcon.nssu.example.com.lostcon.common.Constants;
 import lostcon.nssu.example.com.lostcon.map.NMapPOIflagType;
 import lostcon.nssu.example.com.lostcon.map.NMapViewerResourceProvider;
 import lostcon.nssu.example.com.lostcon.model.Chat;
@@ -73,6 +76,7 @@ public class SearchActivity extends NMapActivity {
     LocationListener locationListener;
     private String lng;
     private String lat;
+    private BroadcastReceiver receiver;
 
     private int menu_select = 1;
     LinearLayout[] menu;
@@ -120,6 +124,10 @@ public class SearchActivity extends NMapActivity {
         menu_check[1].setBackgroundColor(getResources().getColor(R.color.check_blue));
         menu[0].setBackgroundColor(getResources().getColor(R.color.White));
         menu_check[0].setBackgroundColor(getResources().getColor(R.color.White));
+
+        receiver = new Receiver();
+        IntentFilter filter = new IntentFilter("service");
+        registerReceiver(receiver, filter);
     }
 
     public void initGps() {
@@ -354,6 +362,23 @@ public class SearchActivity extends NMapActivity {
         super.onBackPressed();
 
             finish();
+
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        unregisterReceiver(receiver);
+    }
+
+    class Receiver extends BroadcastReceiver
+    {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String serviceData = intent.getStringExtra(Constants.BEC_ITEM);
+            Log.d("main_at","serviceData : "+serviceData);
+        }
 
     }
 }

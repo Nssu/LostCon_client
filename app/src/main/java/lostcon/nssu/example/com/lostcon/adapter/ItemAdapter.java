@@ -73,7 +73,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 if(list.get(position).getDistance().equals("범위를 벗어났습니다")){
                     v.setBackgroundResource(R.drawable.search_blue);
                         if(!((MainActivity)context).popupWindow_search.isShowing()){
-                            ((MainActivity)context).popupWindow_search.showAtLocation(((MainActivity)context).popupView_search, Gravity.CENTER, 0, 0);
+                            ((MainActivity)context).popupWindow_search
+                                    .showAtLocation(((MainActivity)context).popupView_search, Gravity.CENTER, 0, 0);
                     }
                 }else if(list.get(position).getAlarm().equals("1")) {
                     v.setBackgroundResource(R.drawable.speaker_gray);

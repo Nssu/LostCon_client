@@ -44,6 +44,7 @@ import lostcon.nssu.example.com.lostcon.model.Item;
 import lostcon.nssu.example.com.lostcon.model.Location;
 import lostcon.nssu.example.com.lostcon.util.ApiUtil;
 import lostcon.nssu.example.com.lostcon.util.BeaconService;
+import lostcon.nssu.example.com.lostcon.util.PreferenceHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     private int port;
     private Socket socket;
     private BroadcastReceiver receiver;
+    private int money;
+    private String uuid;
+
     private Emitter.Listener onMessageHandler = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
@@ -106,17 +110,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setting(){
+        Item item = new Item();
+        item.setUuid(Constants.UUID);
+        item.setUser_key(1);
+        item.setItem_key(1);
+        PreferenceHelper.saveItem(item);
+
         popupView_chat = getLayoutInflater().inflate(R.layout.popup_request_chat, null);
-        popupWindow_chat = new PopupWindow(popupView_chat, RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT,true);
-
-        request_loc = (Button)(popupView_chat.findViewById(R.id.request_loc));
-        request_chat = (Button)(popupView_chat.findViewById(R.id.request_chat));
-        cancel_button = (Button)(popupView_chat.findViewById(R.id.cancel_button));
-
-        user_name = (TextView)findViewById(R.id.user_name);
+        popupWindow_chat = new PopupWindow(popupView_chat, RelativeLayout.LayoutParams.MATCH_PARENT
+                ,RelativeLayout.LayoutParams.MATCH_PARENT,true);
         popupView_search = getLayoutInflater().inflate(R.layout.popup_search, null);
         popupWindow_search = new PopupWindow(popupView_search, RelativeLayout.LayoutParams.MATCH_PARENT
                 ,RelativeLayout.LayoutParams.MATCH_PARENT,true);
+
+        request_loc = (Button)(popupView_search.findViewById(R.id.request_loc));
+        request_chat = (Button)(popupView_search.findViewById(R.id.request_chat));
+        cancel_button = (Button)(popupView_search.findViewById(R.id.cancel_button));
+
+
+        user_name = (TextView)findViewById(R.id.user_name);
+
+
 
         search_button = (ImageView)findViewById(R.id.search_button);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -136,41 +150,70 @@ public class MainActivity extends AppCompatActivity {
         };
 
         beaconManager = MinewBeaconManager.getInstance(this);
-        port = getIntent().getIntExtra(Constants.DATA_PORT,0);
-        if(port != 0 )
-        {
-            Log.d("main_at","fcm port : " +port );
-            if(port != -1)
-            {
-                try {
-                    socket = IO.socket("http://192.168.0.200:3001");
-                } catch (URISyntaxException e) {
-                    Log.d("main_at","socket error" + e.getMessage());
-                    e.printStackTrace();
-                }
-                socket.connect();
-                socket.on("toclient", onMessageHandler);
-                JSONObject json = new JSONObject();
-                try {
-                    json.put("msg","sion");
-                    socket.emit("fromclient",json);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.d("main_at","socket error" + e.getMessage());
-                }
+        if(getIntent() != null) {
+            port = getIntent().getIntExtra(Constants.DATA_PORT, 0);
+            money = getIntent().getIntExtra(Constants.DATA_MONEY, 0);
+            uuid = getIntent().getStringExtra(Constants.DATA_UUID);
+            if (port != 0) {
+                Log.d("main_at", "fcm port : " + port);
+                if (port != -1) {
+                    try {
+                        socket = IO.socket(Constants.SOC_URL);
+                    } catch (URISyntaxException e) {
+                        Log.d("main_at", "socket error" + e.getMessage());
+                        e.printStackTrace();
+                    }
+                    socket.connect();
+                    socket.on("toclient", onMessageHandler);
+                    JSONObject json = new JSONObject();
+                    try {
+                        json.put("msg", "sion");
+                        socket.emit("fromclient", json);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.d("main_at", "socket error" + e.getMessage());
+                    }
 
+                } else {
+                    Location loc = new Location();
+                    loc.setLatitude(12);
+                    loc.setLongitude(23);
+                    ApiUtil.postLocation(loc)
+                            .subscribe(value -> Log.d("main_at", "성공")
+                                    , err -> Log.e("main_at", "실패 : " + err.getMessage()));
+                }
             }
-            else
-            {
-                Location loc = new Location();
-                loc.setLatitude(12);
-                loc.setLongitude(23);
-                ApiUtil.postLocation(loc)
-                        .subscribe(value -> Log.d("main_at","성공")
-                        , err -> Log.e("main_at","실패 : "+ err.getMessage()) );
-            }
-
         }
+        request_loc.setOnClickListener(v ->
+        {
+            ApiUtil.requestLocation(PreferenceHelper.loadItem())
+                    .subscribe(loc -> {
+                                Log.d("main_at", loc.getLatitude() + " / " + loc.getLongitude());
+                                Intent intent = new Intent(this,SearchActivity.class);
+                                intent.putExtra(Constants.DATA_LAT,loc.getLatitude());
+                                intent.putExtra(Constants.DATA_LON,loc.getLongitude());
+                                startActivity(intent);
+                            },
+                            err ->Log.d("main_at", "error : " + err.getMessage() ));
+        });
+
+        request_chat.setOnClickListener(v ->
+        {
+            ApiUtil.requestTalk(item)
+                    .subscribe(value ->{
+                                Intent intent = new Intent(this,SearchActivity.class);
+                                intent.putExtra(Constants.DATA_PORT,port);
+                                startActivity(intent);
+                            } ,
+                            err -> Log.d("main_at","error : " + err.getMessage()));
+        });
+
+        cancel_button.setOnClickListener(v ->
+        {
+            if(popupWindow_search.isShowing()){
+                popupWindow_search.dismiss();
+            }
+        });
         checkBluetooth();
     }
     public void setClickListener(){
@@ -205,21 +248,7 @@ public class MainActivity extends AppCompatActivity {
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item item = new Item();
-                item.setItem_key(1);
-                item.setUser_key(1);
-                item.setUuid("uu");
-                item.setMoney(1000);
-                /*ApiUtil.requestLocation(item)
-                        .subscribe(loc -> Log.d("main_at", loc.getLatitude() + " / " + loc.getLongitude()),
-                                err ->Log.d("main_at", "error : " + err.getMessage() ));*/
 
-                ApiUtil.requestTalk(item)
-                        .subscribe(value ->{
-                                    port = value;
-                                    soc();
-                                } ,
-                                err -> Log.d("main_at","error : " + err.getMessage()));
                 /*if(!popupWindow_search.isShowing()){
                     popupWindow_search.showAtLocation(popupView_search, Gravity.CENTER, 0, 0);
                 }*/
@@ -231,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
     {
         Log.d("main_at","1:1 port : " + port);
         try {
-            socket = IO.socket("http://192.168.0.200:3001");
+            socket = IO.socket(Constants.SOC_URL);
         } catch (URISyntaxException e) {
             e.printStackTrace();
             Log.d("main_at","socket error" + e.getMessage());
@@ -334,9 +363,13 @@ public class MainActivity extends AppCompatActivity {
         }else{
             finish();
         }
+    }
 
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
         unregisterReceiver(receiver);
-        finish();
     }
 
 
