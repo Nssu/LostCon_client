@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 27
@@ -16,6 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    realm {
+        syncEnabled = true;
+    }
 }
 
 dependencies {
@@ -28,24 +37,45 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+
+    //rxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.x.x'
+
     //circle imageview
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //network
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.google.code.gson:gson:2.8.4'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
     //image
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
-    implementation 'jp.wasabeef:glide-transformations:3.0.1'
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
 
     //sliding panel
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
 
     //naver map
-    compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
+    implementation 'com.naver.maps.open:naver-map-api:2.1.2@aar'
+
+    //boilerplate
+    compileOnly 'org.projectlombok:lombok:1.16.20'
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+
+    //socket
+    implementation 'io.socket:socket.io-client:1.0.0'
+//    implementation 'com.github.nkzawa:socket.io-client:0.5.2'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-messaging:12.0.1'
+
+    //beacon
+    implementation files('libs/minewBeaconScan.jar')
+
 
 
 
