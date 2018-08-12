@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +21,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.minew.beacon.BluetoothState;
 import com.minew.beacon.MinewBeaconManager;
-import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,10 +78,12 @@ public class MainActivity extends AppCompatActivity {
             JSONObject object = (JSONObject) args[0];
 //            String data = (String) args[0];
             try {
-                Log.d("main_at","msg : " + object.getString("msg"));
+                Log.d("main_at", "msg : " + object.getString("msg"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    };
 
     //1:1찾기 팝업(사례금)
     public PopupWindow popupWindow_chat;
@@ -90,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
             Message msg = gson.fromJson(data, Message.class);
             Log.d("main_at","msg : " + msg.getMsg());*/
 
-        }
-    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -333,12 +334,12 @@ public class MainActivity extends AppCompatActivity {
         }else{
             finish();
         }
-        }
+
         unregisterReceiver(receiver);
         finish();
     }
 
-    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -362,4 +363,4 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-}
+
