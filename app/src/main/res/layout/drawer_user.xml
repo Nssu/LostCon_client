@@ -25,6 +25,7 @@
            android:layout_width="79dp"
            android:layout_height="79dp"
            android:src="@drawable/example"
+           android:scaleType="centerCrop"
            app:riv_border_color="@color/White"
            app:riv_border_width="1px"
            app:riv_corner_radius="166dp" />
@@ -143,29 +144,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="2.3dp"
-            android:layout_height="match_parent"
-            android:background="@color/White">
-
-        </LinearLayout>
-
-        <TextView
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="제품 목록 수정"
-            android:textSize="15.3sp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="16.3dp"/>
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

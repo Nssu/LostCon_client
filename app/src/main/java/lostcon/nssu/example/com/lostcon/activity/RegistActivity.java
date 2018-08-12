@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +38,7 @@ import okhttp3.RequestBody;
 public class RegistActivity extends AppCompatActivity {
 
     ImageView regist_image;
+    SeekBar seekbar;
     EditText edit_name;
 
     // 권한 체크 관련
@@ -60,11 +62,23 @@ public class RegistActivity extends AppCompatActivity {
         setContentView(R.layout.activity_regist);
         setting();
 
+        Intent intent = getIntent();
+        String type = intent.getExtras().getString("type");
+        if(type.equals("add")){
+            //삭제 버튼 안보이게 하기
+        }else if(type.equals("edit")){
+            //삭제버튼 보이고, 내용도 받아오기
+
+        }
+
+
+
     }
 
     public void setting(){
         regist_image = (ImageView)findViewById(R.id.regist_image);
         edit_name = (EditText)findViewById(R.id.edit_name);
+        seekbar = (SeekBar)findViewById(R.id.seekbar);
     }
 
 

@@ -4,4 +4,5 @@
     <string name="NAVER_API_PW">qYposFj5OR</string>
     <string name="default_channel_id">default</string>
     <string name="default_channel_name">default_name</string>
+    <string name="str_done">CLEAR</string>
 </resources>

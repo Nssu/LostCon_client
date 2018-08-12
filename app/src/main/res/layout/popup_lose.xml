@@ -16,12 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="26.3dp">
+            android:gravity="center"
+            android:padding="19dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="어떻게 찾으시겠습니까?"
+                android:text="000이 범위를 벗어났습니다.
+물품을 찾으시겠습니까?"
+                android:textSize="15.2sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:gravity="center"/>
@@ -30,34 +33,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="22.7dp">
+                android:gravity="center"
+                android:layout_marginTop="19dp">
                 
                 <Button
-                    android:id="@+id/request_loc"
                     android:layout_width="118.3dp"
                     android:layout_height="36dp"
                     android:background="@drawable/short_box"
-                    android:text="위치만 요청"
+                    android:text="도움 요청"
                     android:layout_marginRight="19.7dp"
                     android:textColor="@color/White"/>
 
                 <Button
-                    android:id="@+id/request_chat"
                     android:layout_width="118.3dp"
                     android:layout_height="36dp"
                     android:background="@drawable/short_box"
-                    android:text="1:1대화 요청"
+                    android:text="알림 울리기"
                     android:textColor="@color/White"/>
                 
             </LinearLayout>
 
             <Button
-                android:id="@+id/cancel_button"
                 android:layout_marginTop="15dp"
                 android:layout_width="256dp"
                 android:layout_height="36dp"
                 android:background="@drawable/long_box"
-                android:text="취소"
+                android:text="취소하기"
                 android:textColor="@color/White"/>
 
         </LinearLayout>

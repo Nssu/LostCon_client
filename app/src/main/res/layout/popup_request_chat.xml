@@ -16,49 +16,68 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="26.3dp">
+            android:gravity="center"
+            android:padding="19dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="어떻게 찾으시겠습니까?"
+                android:text="1:1 대화 요청을 정말 하시겠습니까?"
+                android:textSize="15.2sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:gravity="center"/>
-            
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <EditText
+
+                android:layout_width="256dp"
+                android:layout_height="31dp"
+                android:background="@drawable/long_box2"
+                android:hint="사례금을 설정해주세요."
+                android:textSize="13.8sp"
+                android:paddingLeft="15dp"/>
+
+
+                <TextView
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textSize="10sp"
+                    android:text="* 필수 사항 아님"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="22.7dp">
+                android:gravity="center"
+                android:layout_marginTop="10dp">
                 
                 <Button
-                    android:id="@+id/request_loc"
                     android:layout_width="118.3dp"
                     android:layout_height="36dp"
                     android:background="@drawable/short_box"
-                    android:text="위치만 요청"
+                    android:text="요청하기"
                     android:layout_marginRight="19.7dp"
                     android:textColor="@color/White"/>
 
                 <Button
-                    android:id="@+id/request_chat"
                     android:layout_width="118.3dp"
                     android:layout_height="36dp"
                     android:background="@drawable/short_box"
-                    android:text="1:1대화 요청"
+                    android:text="취소"
                     android:textColor="@color/White"/>
                 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/cancel_button"
-                android:layout_marginTop="15dp"
-                android:layout_width="256dp"
-                android:layout_height="36dp"
-                android:background="@drawable/long_box"
-                android:text="취소"
-                android:textColor="@color/White"/>
 
         </LinearLayout>
 
