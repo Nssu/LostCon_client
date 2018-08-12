@@ -19,6 +19,7 @@ public class Item extends RealmObject {
     @SerializedName("item_uuid")
     @Expose()
     private String uuid;
+    private int money;
 
     public Item()
     {}

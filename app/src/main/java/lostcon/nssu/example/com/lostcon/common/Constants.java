@@ -7,6 +7,9 @@ public class Constants {
     public static final String PREF_KEY = "PREF_KEY";
     public static final String PREF_USER = "PREF_USER";
 
+    public static final String PREF_ITEM = "PREF_ITEM";
+
+
     public static final String DATA_PORT = "DATA_PORT";
     public static final int USER_KEY = 1;
 

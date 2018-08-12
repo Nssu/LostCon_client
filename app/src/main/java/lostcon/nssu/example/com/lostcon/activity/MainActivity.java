@@ -195,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 item.setItem_key(1);
                 item.setUser_key(1);
                 item.setUuid("uu");
+                item.setMoney(1000);
                 /*ApiUtil.requestLocation(item)
                         .subscribe(loc -> Log.d("main_at", loc.getLatitude() + " / " + loc.getLongitude()),
                                 err ->Log.d("main_at", "error : " + err.getMessage() ));*/
