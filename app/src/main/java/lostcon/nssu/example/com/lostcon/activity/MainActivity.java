@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView menu_button;
     ImageView search_button;
     ImageView add_item;
+    TextView text_count;
 
     RecyclerView.Adapter mAdapter;
     RecyclerView recycler_item;
@@ -92,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
     //1:1찾기 팝업(사례금)
     public PopupWindow popupWindow_chat;
     public View popupView_chat;
+    public EditText edit_money;
+    public Button submit_money;
             /*data = "{" + data + "}";
             Gson gson = new Gson();
             Message msg = gson.fromJson(data, Message.class);
@@ -110,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setting(){
+        text_count = (TextView)findViewById(R.id.text_count);
+        Log.d("dd_","main onCreate()");
         Item item = new Item();
         item.setUuid(Constants.UUID);
         item.setUser_key(1);
@@ -119,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
         popupView_chat = getLayoutInflater().inflate(R.layout.popup_request_chat, null);
         popupWindow_chat = new PopupWindow(popupView_chat, RelativeLayout.LayoutParams.MATCH_PARENT
                 ,RelativeLayout.LayoutParams.MATCH_PARENT,true);
+        edit_money = (EditText)(popupView_chat.findViewById(R.id.edit_money));
+        submit_money = (Button)(popupView_chat.findViewById(R.id.submit_money));
         popupView_search = getLayoutInflater().inflate(R.layout.popup_search, null);
         popupWindow_search = new PopupWindow(popupView_search, RelativeLayout.LayoutParams.MATCH_PARENT
                 ,RelativeLayout.LayoutParams.MATCH_PARENT,true);
@@ -199,6 +207,10 @@ public class MainActivity extends AppCompatActivity {
 
         request_chat.setOnClickListener(v ->
         {
+            if(popupWindow_search.isShowing()){
+                popupWindow_search.dismiss();
+            }
+            popupWindow_chat.showAtLocation(popupView_search, Gravity.CENTER, 0, 0);
             ApiUtil.requestTalk(item)
                     .subscribe(value ->{
                                 Intent intent = new Intent(this,SearchActivity.class);
@@ -206,8 +218,16 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(intent);
                             } ,
                             err -> Log.d("main_at","error : " + err.getMessage()));
+
         });
 
+        submit_money.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
         cancel_button.setOnClickListener(v ->
         {
             if(popupWindow_search.isShowing()){
@@ -299,6 +319,7 @@ public class MainActivity extends AppCompatActivity {
 
         //더미데이터 넣기
         setDummy();
+        text_count.setText(""+item_list.size());
 
     }
 
@@ -351,7 +372,6 @@ public class MainActivity extends AppCompatActivity {
     private void showBLEDialog() {
         Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
         startActivityForResult(enableIntent, Constants.REQUEST_ENABLE_BT);
-
     }
     @Override
     public void onBackPressed() {
@@ -361,7 +381,9 @@ public class MainActivity extends AppCompatActivity {
         }else if(layoutMain.isDrawerOpen(Gravity.LEFT)){
             layoutMain.closeDrawer(Gravity.LEFT);
         }else{
-            finish();
+            if(!layoutMain.isDrawerOpen(Gravity.LEFT)) {
+                finish();
+            }
         }
     }
 

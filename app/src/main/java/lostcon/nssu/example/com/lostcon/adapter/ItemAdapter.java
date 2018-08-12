@@ -62,6 +62,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 intent = new Intent(context, RegistActivity.class);
                 intent.putExtra("type","edit");
                 intent.putExtra("img",list.get(position).getIm_url());
+                intent.putExtra("name",list.get(position).getName());
+                intent.putExtra("uuid",list.get(position).getUuid());
+                intent.putExtra("range",list.get(position).getRange());
+                intent.putExtra("alarm",list.get(position).getAlarm());
                 context.startActivity(intent);
             }
         });

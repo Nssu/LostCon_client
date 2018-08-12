@@ -79,6 +79,23 @@ public class RegistActivity extends AppCompatActivity {
         regist_image = (ImageView)findViewById(R.id.regist_image);
         edit_name = (EditText)findViewById(R.id.edit_name);
         seekbar = (SeekBar)findViewById(R.id.seekbar);
+        seekbar.setMax(70);
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
 

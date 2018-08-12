@@ -35,7 +35,7 @@
                 android:orientation="vertical">
 
             <EditText
-
+                android:id="@+id/edit_money"
                 android:layout_width="256dp"
                 android:layout_height="31dp"
                 android:background="@drawable/long_box2"
@@ -62,6 +62,7 @@
                 android:layout_marginTop="10dp">
                 
                 <Button
+                    android:id="@+id/submit_money"
                     android:layout_width="118.3dp"
                     android:layout_height="36dp"
                     android:background="@drawable/short_box"

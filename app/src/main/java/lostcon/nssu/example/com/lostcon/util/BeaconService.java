@@ -14,7 +14,6 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.minew.beacon.BeaconValueIndex;
 import com.minew.beacon.BluetoothState;
 import com.minew.beacon.MinewBeacon;
 import com.minew.beacon.MinewBeaconManager;
@@ -87,7 +86,7 @@ public class BeaconService extends Service {
                 int cnt = 0;
                 if(!list.isEmpty())
                 {
-                    for(MinewBeacon m : list)
+                   /* for(MinewBeacon m : list)
                     {
                        if(m.getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_UUID).getStringValue()
                                .equals(Constants.UUID))
@@ -95,7 +94,7 @@ public class BeaconService extends Service {
                            cnt = 1;
                            break;
                        }
-                    }
+                    }*/
                 }
                 if(cnt == 0)
                 {

@@ -19,7 +19,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/background"
                 android:gravity="center_horizontal">
 
@@ -29,6 +29,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/line_menu"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="13dp"/>
 
 
@@ -36,24 +37,29 @@
                 <LinearLayout
                     android:id="@+id/mapLayout"
                     android:layout_marginTop="48.7dp"
-                    android:layout_width="326dp"
-                    android:layout_height="500dp"
-                    android:orientation="horizontal">
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_gravity="center_horizontal">
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="-10dp"
                     android:visibility="visible"
                     android:id="@+id/chat_sliding"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:orientation="vertical"
-                    android:background="@android:color/transparent"
+                    android:layout_height="360dp"
+                    android:orientation="@android:color/transparent"
                     android:descendantFocusability="afterDescendants"
                     android:focusable="false">
 
                 <LinearLayout
+                    android:id="@+id/layout_up"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -74,9 +80,9 @@
 
                     <!-- 채팅내용 출력창 -->
                     <android.support.v7.widget.RecyclerView
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:id="@+id/recycler_chat"
-                        android:layout_width="match_parent"
+                        android:layout_width="320dp"
                         android:layout_height="240dp"
                         android:orientation="vertical"
                         android:background="@color/White">

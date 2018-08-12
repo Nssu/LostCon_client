@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
@@ -52,6 +53,7 @@ import lostcon.nssu.example.com.lostcon.util.SoftKeyboard;
 public class SearchActivity extends NMapActivity {
 
     private LinearLayout mapLayout;
+    private LinearLayout layout_up;
     private NMapView mMapView;
     private NMapController mMapController;
     private NMapResourceProvider mMapViewerResourceProvider;
@@ -83,6 +85,7 @@ public class SearchActivity extends NMapActivity {
     private int menu_select = 1;
     LinearLayout[] menu;
     LinearLayout[] menu_check;
+    public Handler mHandler2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +98,14 @@ public class SearchActivity extends NMapActivity {
         initRecyclerVIew();
         setKeyboard();
 
+        Handler mHandler = new Handler();
+        mHandler2 = new Handler();
+        mHandler.postDelayed(mStartRunnable, 5000);
+
     }
 
     public void init() {
+        layout_up = (LinearLayout)findViewById(R.id.layout_up);
         //gps사용할 수 있는 환경을 가져옴(null이라면 gps 사용 불가지역)
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //gps 및 네트워크 사용 가능한지 확인
@@ -198,6 +206,17 @@ public class SearchActivity extends NMapActivity {
 
     }
 
+    private Runnable mStartRunnable = () -> {
+        //더미데이터 넣기
+        setDummy();
+
+    };
+    private Runnable mStartRunnable2 = () -> {
+        //더미데이터 넣기
+        setDummy2();
+
+    };
+
     public void setClickListener(){
         chat_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +229,7 @@ public class SearchActivity extends NMapActivity {
                     //통신 들어가야 함.
 
                     mAdapter.notifyDataSetChanged();
+                    mHandler2.postDelayed(mStartRunnable2, 2000);
                 }
             }
         });
@@ -249,15 +269,15 @@ public class SearchActivity extends NMapActivity {
         recycler_chat.setLayoutManager(new LinearLayoutManager(this));
         recycler_chat.setAdapter(mAdapter);
 
-        //더미데이터 넣기
-        setDummy();
-
     }
 
-    private void setDummy(){
+    public void setDummy(){
         chat_list.add(new Chat("진수","안녕하세욤!","127.0630205","37.5091300"));
-        chat_list.add(new Chat("진수","ㅎㅇㅎㅇㅎㅇㅎㅇ!","127.0630205","37.5091300"));
+        mAdapter.notifyDataSetChanged();
 
+    }
+    public void setDummy2(){
+        chat_list.add(new Chat("진수","어떻게 도와드릴까요?","127.0630205","37.5091300"));
         mAdapter.notifyDataSetChanged();
     }
 
@@ -273,9 +293,10 @@ public class SearchActivity extends NMapActivity {
                         .post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getApplicationContext(),"내려옴",Toast.LENGTH_LONG).show();
                                 // 키보드 내려왔을때
-
+                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)(chat_sliding.getLayoutParams());
+                                params.height=1000;
+                                chat_sliding.setLayoutParams(params);
                             }
                         });
             }
@@ -289,7 +310,9 @@ public class SearchActivity extends NMapActivity {
                             @Override
                             public void run() {
                                 // 키보드 올라왔을때
-
+                                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)(chat_sliding.getLayoutParams());
+                                params.height=1500;
+                                chat_sliding.setLayoutParams(params);
                             }
                         });
             }
